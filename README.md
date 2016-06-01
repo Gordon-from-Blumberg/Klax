@@ -2,4 +2,4 @@
 
 Browser game combining TBS and RPG genres.
 
-It's my first experience. Klax has not finished. It is not be developed.
+It's my first experience. Klax has not finished. It is not being developed.
