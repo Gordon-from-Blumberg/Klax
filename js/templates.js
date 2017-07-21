@@ -4,7 +4,6 @@
  * @version 1.0.0
  */
 
-
 define(['GBL', 'battlefield'], function (gbl, bf) {
     "use strict";
 
