@@ -4,6 +4,26 @@
  * @version 1.0.0
  */
  
+ var define, require;
+(function() {
+	 var modules = {};
+	 define = function(name, dependencies, create) {
+		 var dependencyModules = [];
+		 for (var i = 0, length = dependencies.length; i < length; i++) {
+			 var dependencyModule = modules[dependencies[i]];
+			 if (!dependencyModule) throw new Error('Module ' + dependencies[i] + ' is not defined, so module ' + name + ' cannot be created!');
+			 dependencyModules.push(dependencyModule);
+		 }
+		 modules[name] = create.apply(null, dependencyModules);
+		 console.log('Module ' + name + ' has been successfuly created');
+	 };
+	 require = function(name) {
+		 var module = modules[name];
+		 if (!module) throw new Error('Module ' + name + ' is not defined!');
+		 return module;
+	 }
+ }());
+ 
  define('GBL', [], function () {
     "use strict";
 
@@ -1117,7 +1137,7 @@
     return gbl;
 });
 
-define(['GBL'], function(gbl) {
+define('config', ['GBL'], function(gbl) {
     "use strict";
 
     var cg={
@@ -1202,9 +1222,11 @@ define(['GBL'], function(gbl) {
             }
         }
     };
+	
+	return cg;
 });
 
-define(['GBL'],function(gbl) {
+define('hexgrid', ['GBL'], function(gbl) {
     "use strict";
 
     var hg={
@@ -2266,7 +2288,7 @@ define(['GBL'],function(gbl) {
     return hg;
 });
 
-define(['GBL', 'hexgrid', 'config'], function (gbl, hg, cg) {
+define('battlefield', ['GBL', 'hexgrid', 'config'], function (gbl, hg, cg) {
     "use strict";
 
     var bf = {
@@ -2435,8 +2457,8 @@ define(['GBL', 'hexgrid', 'config'], function (gbl, hg, cg) {
 
     return bf;
 });
-
-define(['GBL', 'battlefield'], function (gbl, bf) {
+/*
+define('templates', ['GBL', 'battlefield'], function (gbl, bf) {
     "use strict";
 
     var templates = {},
@@ -2549,4 +2571,4 @@ define(['GBL', 'battlefield'], function (gbl, bf) {
     };
 
     gbl._downloadReport(templates);
-}(GBL, mGB, createElement, GBL.game.battlefield));
+}(GBL, mGB, createElement, GBL.game.battlefield));*/
