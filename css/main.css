@@ -1,60 +1,91 @@
+* {
+	box-sizing:border-box;
+}
 body {
-	width:1024px;
-	margin:3px auto;
-	padding:8px;
-	border:2px black solid;
-	border-radius:5px;
-	background:url(../img/base_background.png);
-	text-align:center;
-	font:16px/1.2em arial;
+	font:14px/1.4 'Arial', sans-serif;;
 }
-.button {
-	display:inline-block;
-	border:none;
-	background:rgba(255,255,255,0.6);
-	padding:6px;
-	border-radius:3px
+.form-container {
+	position:absolute;
+	padding:4px;
+	border:1px solid black;
+	border-radius:8px;
+	background: rgba(230,230,230,.6);
+	box-shadow:-1px -1px 4px rgba(0,0,0,0.5);
 }
-.button:hover {outline:1px gold solid;background:rgba(255,255,255,0.8)}
-.button:active {
-	border-top:1px solid rgba(50,50,50,.8);
-	border-left:1px solid rgba(50,50,50,.8)
-}
-.cover {
-	position:fixed;
+.form-row {
 	width:100%;
-	height:100%;
-	z-index:200;
-	background:rgba(30,30,30,.3);
-	top:0;
-	left:0;
-	overflow:scroll
 }
-.cover * {position:absolute}
-.battlefield ,
-.unit,
-.bf-ground,
-.bf-wall {
+
+.form-row::after {
 	display:block;
-	margin:0;
-	overflow:hidden
+	content:"";
+	clear:both;
+	min-height:1px;
 }
-.unit {
-	width:70px;
-	height:100px
+
+.form-row+.form-row {
+	padding-top:2px;
 }
-.battlefield  {margin:0 auto}
-.scene-3d {
-	-webkit-perspective:800px;
-	-moz-perspective:800px;
-	-o-perspective:800px;
-	perspective:800px;
-	background:rgba(150,160,255,.15)
+
+.label-title, .radio-title {
+	float:left;
+	width: 70%;
+	padding-right:2px;
 }
-.bf-wall,
-.sprite {
-	-webkit-transform-origin:50% 100%;
-	-moz-transform-origin:50% 100%;
-	-o-transform-origin:50% 100%;
-	transform-origin:50% 100%;
+
+.radio-title {padding-left: 15px}
+
+.input-container, .hex-count-container {
+	float:left;
+	width:30%;
 }
+
+.hex-count-container {
+	padding:2px;
+	border:1px solid gray;
+	border-radius:4px;
+}
+
+.grid {
+	
+}
+
+label {
+	display:block;
+	cursor:pointer;
+}
+
+input[type="text"], input[type="number"] {
+	padding:2px;
+	display:inline-block;
+	width:100%;
+	border:1px solid black;
+	border-radius:4px;
+	box-shadow:none;
+}
+
+input[type="radio"]:disabled, .disabled {
+	cursor:not-allowed;
+}
+
+input {
+	font:inherit;
+	background: rgba(250,250,250,.75);
+}
+
+.generate-button {
+	width:100%;
+	margin-top:4px;
+	padding:4px;
+	border-width:1px;
+	border-radius:4px;
+	background:rgba(210,210,210,.75);
+	outline:none;
+}
+.generate-button:hover {
+	background:rgba(225,225,225,.75);
+	box-shadow:0 0 3px rgba(50,50,50,0.6);
+}
+.generate-button:active {background:rgba(200,200,200,.8);}
+
+.grid-size-input {}

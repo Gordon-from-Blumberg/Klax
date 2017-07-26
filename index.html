@@ -4,30 +4,85 @@
 		<meta charset="utf-8">
 		<title>Battlefield test</title> <!-- Заголовок -->
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<script data-main="js/main" src="js/lib/require.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/lib/d3.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
 	</head>
 
-	<body>
+	
+	<body class="body">
 		<script type="text/javascript">
-			/*(function(Battle,Unit) {
-                var button=createElement('div',{
-                    className:'button',
-                    innerHTML:'Создать демо поля боя'})
-                        .insertTo(body);
-			button[0].onclick=function() {window.b1=new Battle({
-				teams:[{
-					battlingUnits:[
-						new Unit({avaName:'goblin1'}),
-						new Unit({avaName:'goblin1'}),
-						new Unit({avaName:'goblin1'}),
-						new Unit({avaName:'elf1'})
-					]
-				}]
+			document.addEventListener("DOMContentLoaded", function() {
+				var scriptElement = document.createElement('script');
+				scriptElement.type = 'text/javascript';
+				scriptElement.src = 'js/jsfiddle.js';
+				document.head.append(scriptElement);
 			});
-			mGB('.cover')[0].focus();
-			currentBattlefield.render()}
-            }(GBL.game.battle.Battle,GBL.game.unit.Unit))
-			var bf=new GBL.game.battlefield.Battlefield({});*/
 		</script>
+		<div id="form-container" class="form-container">
+			<div class="form-row">
+				<label>
+					<div class="label-title">Grid size</div>
+					<div class="input-container">
+						<input name="gridSize" type="number" value="6" min="4" max="50" class="grid-size-input"/>
+					</div>				
+				</label>
+			</div>		
+			<div class="form-row">		
+				<div class="label-title">Hex count</div>
+				<div class="hex-count-container" id="hexCount">127</div>
+			</div>
+			<div class="form-row">
+				<label>
+					<div class="label-title">Density</div>
+					<div class="input-container">
+						<input name="density" type="number" value="2" min="1" max="7"/>
+					</div>
+				</label>
+			</div>
+			<div class="form-row">
+				<label>
+					<div class="label-title">Max size</div>
+					<div class="input-container">
+						<input name="maxSize" type="number" value="11" min="4" max="50" class="grid-size-input"/>
+					</div>				
+				</label>
+			</div>
+			<div class="form-row">
+				<label>
+					<div class="label-title">Middle size</div>
+					<div class="input-container">
+						<input name="middleSize" type="number" value="5" min="2" max="20" class="grid-size-input"/>
+					</div>				
+				</label>
+			</div>
+			<div class="form-row">
+				<label>
+					<div class="label-title">Height</div>
+					<div class="input-container">
+						<input name="height" type="number" value="2" min="0" max="4" class="grid-size-input"/>
+					</div>				
+				</label>
+			</div>
+			<div class="form-row"><div class="label-title">Distribution:</div></div>
+			<div class="form-row">
+				<label>
+					<div class="radio-title">Uniform</div>
+					<div class="input-container"><input name="distribution" type="radio" value="uniform" checked/></div>
+				</label>
+				<label class="disabled">
+					<div class="radio-title">Center</div>
+					<div class="input-container"><input name="distribution" type="radio" value="center" disabled class=""/></div>
+				</label>
+				<label class="disabled">
+					<div class="radio-title">Peripheral</div>
+					<div class="input-container"><input name="distribution" type="radio" value="peripheral" disabled class=""/></div>
+				</label>
+			</div>
+			<div class="form-row">
+				<button type="button" class="generate-button" id="generate-button">Generate</button>
+			</div>
+		</div>
+		<svg id="grid" class="grid"></svg>
 	</body>
+
 </html>

@@ -2370,8 +2370,8 @@ define('battlefield', ['GBL', 'hexgrid', 'config'], function (gbl, hg, cg) {
                     arena:function() {}
                 },
                 splitArr,
-                pars=cg.obstacle.pars,
-                probls=cg.obstacle.probls,
+                pars=cg.battlefield.obstacle.pars,
+                probls=cg.battlefield.obstacle.probls,
                 properties=['density', 'maxSize', 'middleSize', 'height', 'distribution'],
                 hexProbls=new Array(this.allHexes.length),
                 sizeProbls,
